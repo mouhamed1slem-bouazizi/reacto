@@ -7,8 +7,11 @@ import { Navbar, Footer, Sidebar, ThemeSettings } from './components';
 import { Preview, CATS, TDAS, Screens, Users, Calendar, ColorPicker, ColorMapping, Editor, Kanban, Area, Bar, Financial, Line, Pie, Pyramid, Stacked } from './pages';
 import './App.css';
 
+import { useStateContext } from './contexts/ContextProvider';
+
 const App = () => {
-    const acitveMenu = true;
+    const { activeMenu } = useStateContext();
+
   return (
     <div>
         <BrowserRouter>
@@ -20,7 +23,7 @@ const App = () => {
                         </button>
                     </TooltipComponent>
                 </div>
-                {acitveMenu ? (
+                {activeMenu ? (
                     <div className='w-72 fixed sidebar dark:bg-secondary-dark-bg bg-white'>
                         <Sidebar />
                     </div>
@@ -30,7 +33,7 @@ const App = () => {
                         <Sidebar />
                     </div>
                 )}
-                <div className={`dark:bg-main-bg bg-main-bg min-h-screen w-full ${acitveMenu ? 'md:ml-72' : 'flex-2'}`}>
+                <div className={`dark:bg-main-bg bg-main-bg min-h-screen w-full ${activeMenu ? 'md:ml-72' : 'flex-2'}`}>
                     <div className='fixed md:static bg-main-bg dark:bg-main-dark-bg navbar w-full'>
                         <Navbar />
                     </div>
